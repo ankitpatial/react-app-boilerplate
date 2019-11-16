@@ -3,17 +3,19 @@ import {AppBar, Container, IconButton, Toolbar, Typography} from '@material-ui/c
 import {Menu as MenuIcon} from '@material-ui/icons';
 import {Link} from 'react-router-dom';
 // @ts-ignore
-import style from './DefaultLayout.css'
+import useStyle from './DefaultLayout.css'
 
 import Session from '../components/Session'
 
 
 export interface DefaultLayoutProps {
   children: any,
+  className?: string,
 }
 
+
 const DefaultLayout = ({children}: DefaultLayoutProps) => {
-  const css = style({});
+  const css = useStyle({});
   return (
     <Session>
       <AppBar position="static">

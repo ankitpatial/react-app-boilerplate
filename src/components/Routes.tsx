@@ -12,6 +12,7 @@ const Routes = () => {
           <Route exact path="/" component={HomePage}/>
           <Route path="/login" component={lazy(() => import('../pages/LoginPage'))}/>
           <Route path="/about-us" component={lazy(() => import('../pages/AboutUsPage'))}/>
+          <Route path="/form-example" component={lazy(() => import('../pages/FormExample'))}/>
         </Switch>
       </Suspense>
     </Router>

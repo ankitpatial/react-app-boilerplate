@@ -1,31 +1,65 @@
 import * as React from "react";
 import { Field, ErrorMessage, FieldProps } from "formik";
-import { FormControl, TextField as Input, FormHelperText } from '@material-ui/core'
+import {
+  FormControl, FormHelperText,
+  InputLabel, OutlinedInput,
+} from '@material-ui/core'
+
+import { InputAdornmentProps } from '@material-ui/core/InputAdornment'
+import { makeStyles } from '@material-ui/core/styles';
+import { uniqueId } from 'lodash';
 
 interface TextFieldProps {
   name: string,
   label: string,
+  labelWidth?: number,
   type?: string,
-  errors?: any
+  errors?: any,
+  startAdornment?: React.ComponentType<InputAdornmentProps>,
+  endAdornment?: React.ComponentType<InputAdornmentProps>
 }
 
-export default (props: TextFieldProps) => (
-  <Field name={props.name}>
-    {({ field, meta }: FieldProps) => (
-      <FormControl error={meta.touched && !!meta.error} fullWidth>
-        <Input
-          {...field}
-          label={props.label}
-          type={props.type}
-          autoComplete="off"
-          error={meta.touched && !!meta.error}
-        />
-        <ErrorMessage
-          name={props.name}
-          component={FormHelperText}
-        />
-      </FormControl>
-    )}
-  </Field>
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  label: {
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(-0.6),
+    zIndex: 10
+  },
+  helpTxt: {
+    marginLeft: theme.spacing(1),
+  },
+}));
 
-)
+export default (props: TextFieldProps) => {
+  const classes = useStyles();
+  const id = uniqueId('txt');
+  return (
+    <Field name={props.name}>
+      {({ field, meta }: FieldProps) => (
+        <FormControl error={meta.touched && !!meta.error} fullWidth className={classes.margin}>
+          <InputLabel htmlFor={id} className={classes.label} >{props.label}</InputLabel>
+          <OutlinedInput
+            id={id}
+            type={props.type}
+            startAdornment={props.startAdornment}
+            endAdornment={props.endAdornment}
+            labelWidth={props.labelWidth || 60}
+            autoComplete="off"
+            {...field}
+          />
+
+          <ErrorMessage
+            name={props.name}
+            component={FormHelperText}
+            className={classes.helpTxt}
+          />
+
+        </FormControl>
+      )}
+    </Field>
+
+  );
+}
