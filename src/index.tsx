@@ -1,21 +1,16 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
 import './index.css'
-import ErrorBoundary from './components/ErrorBoundary';
-import Routes from './components/Routes';
+import App from './App';
 import createStore from './redux/store';
 
 const app = (
-  <Suspense fallback={<div>Loading page...</div>}>
-    <ErrorBoundary>
-      <Provider store={createStore()}>
-        <Routes/>
-      </Provider>
-    </ErrorBoundary>
-  </Suspense>
+  <Provider store={createStore()}>
+    <App/>
+  </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

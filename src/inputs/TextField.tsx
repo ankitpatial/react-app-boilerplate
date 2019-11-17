@@ -13,6 +13,7 @@ interface TextFieldProps {
   name: string,
   label: string,
   labelWidth?: number,
+  multiline?: boolean,
   type?: string,
   errors?: any,
   startAdornment?: React.ComponentType<InputAdornmentProps>,
@@ -40,10 +41,11 @@ export default (props: TextFieldProps) => {
     <Field name={props.name}>
       {({ field, meta }: FieldProps) => (
         <FormControl error={meta.touched && !!meta.error} fullWidth className={classes.margin}>
-          <InputLabel htmlFor={id} className={classes.label} >{props.label}</InputLabel>
+          <InputLabel htmlFor={id} className={classes.label}>{props.label}</InputLabel>
           <OutlinedInput
             id={id}
             type={props.type}
+            multiline={props.multiline}
             startAdornment={props.startAdornment}
             endAdornment={props.endAdornment}
             labelWidth={props.labelWidth || 60}

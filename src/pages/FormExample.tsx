@@ -6,9 +6,11 @@ import DefaultLayout from '../layout/DefaultLayout'
 import { TextField } from '../inputs'
 import * as yup from "yup";
 
-
 interface FormData {
-  name: string
+  firstName: string,
+  lastName: string,
+  address: string,
+  note: string,
 }
 
 const validationSchema = yup.object().shape({
@@ -20,7 +22,10 @@ const validationSchema = yup.object().shape({
 
 const FormExample = () => {
   const initialData = { // must pass all field initialised
-    name: ''
+    firstName: '',
+    lastName: '',
+    address: '',
+    note: '',
   };
 
   const handleSubmit = (data: FormData) => {
@@ -50,10 +55,14 @@ const FormExample = () => {
               <TextField name="firstName" label="First Name" labelWidth={85}/>
             </Grid>
             <Grid item xs={6}>
-              <TextField name="lastName" label="Last Name" labelWidth={85} />
+              <TextField name="lastName" label="Last Name" labelWidth={85}/>
             </Grid>
             <Grid item xs={12}>
               <TextField name="address" label="Address" labelWidth={65}/>
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField name="note" label="Note" labelWidth={40} multiline/>
             </Grid>
 
           </Grid>
