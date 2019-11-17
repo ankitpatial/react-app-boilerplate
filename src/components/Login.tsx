@@ -20,10 +20,10 @@ const Login = () => {
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => new Promise((resolve) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          console.log('Posted data', values);
           setSubmitting(false);
           resolve();
-        }, 5000);
+        }, 2000);
       })}
     >
       {({ isSubmitting }) => (
