@@ -2,8 +2,8 @@ import * as React from 'react'
 import { Formik, Form } from 'formik'
 import { Grid } from '@material-ui/core'
 
-import DefaultLayout from '../layout/DefaultLayout'
-import { TextField } from '../inputs'
+import DefaultLayout from '../../layouts/LandingLayout'
+import { TextField } from '../../inputs'
 import * as yup from "yup";
 
 interface FormData {

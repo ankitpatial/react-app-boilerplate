@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Layout from '../layout/DefaultLayout';
+import Layout from '../../layouts/LandingLayout';
 
 
-const AboutUsPage = () => {
+const AboutUs = () => {
 
   return (
     <Layout>
@@ -13,4 +13,4 @@ const AboutUsPage = () => {
 
 };
 
-export default AboutUsPage;
+export default AboutUs;

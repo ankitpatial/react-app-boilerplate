@@ -5,8 +5,6 @@ export interface SessionProps {
 }
 
 const Session = ({ children }: SessionProps) => {
-
-
   return (
     <div>
       {children}

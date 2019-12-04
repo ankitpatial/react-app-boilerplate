@@ -13,7 +13,7 @@ const validationSchema = yup.object().shape({
     .required('Required')
 });
 
-const Login = () => {
+const LoginForm = () => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -52,4 +52,4 @@ const Login = () => {
 };
 
 
-export default Login;
+export default LoginForm;

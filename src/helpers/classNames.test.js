@@ -1,7 +1,7 @@
 import classNames from "./classNames";
 
 
-describe('utils.classNames', () => {
+describe('helpers.classNames', () => {
 
   // 'foo', 'bar', 'baz' => 'foo bar baz'
   test('multiple params', () => {
