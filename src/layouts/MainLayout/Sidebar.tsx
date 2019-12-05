@@ -1,8 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Divider, Drawer } from '@material-ui/core';
+import { Divider, Drawer, Theme } from '@material-ui/core';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
@@ -12,11 +10,9 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 
-import Profile from './Profile';
 import SidebarNav from './SidebarNav';
-import UpgradePlan from './UpgradePlan';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   drawer: {
     width: 240,
     [theme.breakpoints.up('lg')]: {
@@ -39,51 +35,66 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Sidebar = props => {
-  const { open, variant, onClose, className, ...rest } = props;
 
+interface OnCloseFunc {
+  (): void
+}
+
+export interface Page {
+  title: string,
+  href: string,
+  icon: JSX.Element
+}
+
+interface SidebarProps {
+  onClose: OnCloseFunc,
+  open: boolean,
+  variant?: any
+}
+
+const Sidebar = (props: SidebarProps) => {
+  const { open, variant, onClose } = props;
   const classes = useStyles();
-
-  const pages = [
+  const pages : Array<Page> = [
     {
       title: 'Dashboard',
       href: '/dashboard',
-      icon: <DashboardIcon />
+      icon: <DashboardIcon/>
     },
     {
       title: 'Users',
       href: '/users',
-      icon: <PeopleIcon />
+      icon: <PeopleIcon/>
     },
     {
       title: 'Products',
       href: '/products',
-      icon: <ShoppingBasketIcon />
+      icon: <ShoppingBasketIcon/>
     },
     {
       title: 'Authentication',
       href: '/sign-in',
-      icon: <LockOpenIcon />
+      icon: <LockOpenIcon/>
     },
     {
       title: 'Typography',
       href: '/typography',
-      icon: <TextFieldsIcon />
+      icon: <TextFieldsIcon/>
     },
     {
       title: 'Icons',
       href: '/icons',
-      icon: <ImageIcon />
+      icon: <ImageIcon/>
     },
     {
       title: 'Account',
       href: '/account',
-      icon: <AccountBoxIcon />
+      icon: <AccountBoxIcon/>
     },
     {
       title: 'Settings',
       href: '/settings',
-      icon: <SettingsIcon />
+      icon: <SettingsIcon/>
     }
   ];
 
@@ -95,27 +106,15 @@ const Sidebar = props => {
       open={open}
       variant={variant}
     >
-      <div
-        {...rest}
-        className={clsx(classes.root, className)}
-      >
-        <Profile />
-        <Divider className={classes.divider} />
+      <div className={classes.root}>
+        <Divider className={classes.divider}/>
         <SidebarNav
           className={classes.nav}
           pages={pages}
         />
-        <UpgradePlan />
       </div>
     </Drawer>
   );
-};
-
-Sidebar.propTypes = {
-  className: PropTypes.string,
-  onClose: PropTypes.func,
-  open: PropTypes.bool.isRequired,
-  variant: PropTypes.string.isRequired
 };
 
 export default Sidebar;

@@ -5,6 +5,7 @@ declare module '@material-ui/core/styles/createPalette' {
     black?: any;
     white?: any;
     neutral?: any;
+    icon?: any;
   }
 
   interface PaletteOptions {
@@ -25,23 +26,23 @@ declare module '@material-ui/core/styles/createPalette' {
 
 }
 
-declare module '@material-ui/core/styles/defaultTheme' {
-  interface DefaultTheme {
-    shape: Shape;
-    breakpoints: Breakpoints;
-    direction: Direction;
-    mixins: Mixins;
-    overrides?: Overrides;
-    palette: Palette;
-    props?: ComponentsProps;
-    shadows: Shadows;
-    spacing: Spacing;
-    transitions: Transitions;
-    typography: Typography;
-    zIndex: ZIndex;
-  }
-
-}
+// declare module '@material-ui/core/styles/defaultTheme' {
+//   interface DefaultTheme {
+//     shape: Shape;
+//     breakpoints: Breakpoints;
+//     direction: Direction;
+//     mixins: Mixins;
+//     overrides?: Overrides;
+//     palette: Palette;
+//     props?: ComponentsProps;
+//     shadows: Shadows;
+//     spacing: Spacing;
+//     transitions: Transitions;
+//     typography: Typography;
+//     zIndex: ZIndex;
+//   }
+//
+// }
 
 declare module '@material-ui/core/styles/createTypography' {
   interface TypographyOptions {

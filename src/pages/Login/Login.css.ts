@@ -1,7 +1,7 @@
-import { createStyles, makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import { Theme } from "@material-ui/core";
 
-const style = (theme: Theme) => createStyles({
+export default makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
     height: '100%'
@@ -76,7 +76,4 @@ const style = (theme: Theme) => createStyles({
     }
   },
 
-});
-
-
-export default makeStyles(style);
+}));

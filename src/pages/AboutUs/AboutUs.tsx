@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../../layouts/LandingLayout';
+import Layout from '../../layouts/DefaultLayout';
 
 
 const AboutUs = () => {

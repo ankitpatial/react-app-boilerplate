@@ -1,13 +1,10 @@
-/* eslint-disable react/no-multi-comp */
-/* eslint-disable react/display-name */
-import React, { forwardRef } from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { List, ListItem, Button, colors } from '@material-ui/core';
+import { List, ListItem, colors, Theme } from '@material-ui/core';
+import { Page } from './Sidebar';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   item: {
     display: 'flex',
@@ -40,40 +37,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CustomRouterLink = forwardRef((props, ref) => (
-  <div
-    ref={ref}
-    style={{ flexGrow: 1 }}
-  >
-    <RouterLink {...props} />
-  </div>
-));
 
-const SidebarNav = props => {
-  const { pages, className, ...rest } = props;
+interface SidebarNavProps {
+  pages: Array<Page>,
+}
 
+const SidebarNav = ({ pages }: SidebarNavProps) => {
   const classes = useStyles();
 
   return (
-    <List
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <List className={classes.root}>
       {pages.map(page => (
         <ListItem
           className={classes.item}
           disableGutters
           key={page.title}
         >
-          <Button
-            activeClassName={classes.active}
-            className={classes.button}
-            component={CustomRouterLink}
-            to={page.href}
-          >
+          <div>
             <div className={classes.icon}>{page.icon}</div>
             {page.title}
-          </Button>
+          </div>
         </ListItem>
       ))}
     </List>

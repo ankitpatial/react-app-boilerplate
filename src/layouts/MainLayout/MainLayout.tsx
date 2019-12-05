@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/styles';
-import { useMediaQuery } from '@material-ui/core';
+import { Theme, useMediaQuery } from '@material-ui/core';
 import clsx from '../../helpers/classNames';
-
 import Sidebar from './Sidebar';
-import Topbar from '../components/Topbar';
-import Footer from './Footer';
+import TopBar from '../components/TopBar';
+import Footer from '../components/Footer';
 
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     paddingTop: 56,
     height: '100%',
-    // @ts-ignore
     [theme.breakpoints.up('sm')]: {
       paddingTop: 64
     }
@@ -33,8 +31,7 @@ const MainLayout = (props: MainProps) => {
   const { children } = props;
 
   const classes = useStyles();
-  const theme = useTheme();
-  // @ts-ignore
+  const theme: Theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'), {
     defaultMatches: true
   });
@@ -49,7 +46,7 @@ const MainLayout = (props: MainProps) => {
     setOpenSidebar(false);
   };
 
-  const shouldOpenSidebar = isDesktop ? true : openSidebar;
+  const shouldOpenSidebar = isDesktop || openSidebar ;
 
   return (
     <div
@@ -58,7 +55,7 @@ const MainLayout = (props: MainProps) => {
         [classes.shiftContent]: isDesktop
       })}
     >
-      <Topbar onSidebarOpen={handleSidebarOpen}/>
+      <TopBar onSidebarOpen={handleSidebarOpen}/>
       <Sidebar
         onClose={handleSidebarClose}
         open={shouldOpenSidebar}

@@ -23,6 +23,9 @@ const App = () => {
                 <Route path="/login" component={lazy(() => import('./pages/Login/Login'))}/>
                 <Route path="/about-us" component={lazy(() => import('./pages/AboutUs/AboutUs'))}/>
                 <Route path="/form-example" component={lazy(() => import('./pages/FormExample/FormExample'))}/>
+
+                <Route path="/dashboard" component={lazy(() => import('./pages/Dashboard'))}/>
+
               </Switch>
             </Suspense>
           </ErrorBoundary>

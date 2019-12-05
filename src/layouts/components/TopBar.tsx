@@ -1,47 +1,29 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
 import { AppBar, Toolbar, Badge, Hidden, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    boxShadow: 'none'
-  },
-  flexGrow: {
-    flexGrow: 1
-  },
-  signOutButton: {
-// @ts-ignore
-    marginLeft: theme.spacing(1)
-  }
-}));
+import useStyles from './TopBar.css';
 
 interface OnOpenFunc {
   (): void
 }
 
-interface TopbarProps {
-  className?: string,
+interface TopBarProps {
   onSidebarOpen?: OnOpenFunc
 }
 
-
-const Topbar = (props: TopbarProps) => {
-  const { className, onSidebarOpen, ...rest } = props;
+const TopBar = (props: TopBarProps) => {
+  const { onSidebarOpen } = props;
 
   const classes = useStyles();
 
   const [notifications] = useState([]);
 
   return (
-    <AppBar
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <AppBar  className={classes.root}>
       <Toolbar>
         <RouterLink to="/">
           <img
@@ -81,4 +63,4 @@ const Topbar = (props: TopbarProps) => {
 };
 
 
-export default Topbar;
+export default TopBar;
